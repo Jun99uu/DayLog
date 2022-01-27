@@ -1,25 +1,16 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-function Home() {
-  const [isLogined, setIsLogined] = useState(false);
-
-  const auth = getAuth();
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLogined(true);
-      } else {
-        setIsLogined(false);
-      }
-    });
-  }, []);
+function Home({ isLogined }) {
   return (
     <div>
       <h1>DayLog</h1>
       {isLogined ? (
-        <h1>로그인 됨</h1>
+        <div>
+          <h3>반가워요, 오늘의 하루를 한 줄로 기록해볼까요?</h3>
+          <Link to="/daylog">
+            <button>시작하기</button>
+          </Link>
+        </div>
       ) : (
         <Link to="./login">
           <button>로그인</button>

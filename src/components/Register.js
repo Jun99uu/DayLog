@@ -5,6 +5,10 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+
+const db = getFirestore();
 
 function Register() {
   const [name, setName] = useState("");
@@ -19,8 +23,16 @@ function Register() {
     updateProfile(auth.currentUser, {
       displayName: name,
     })
-      .then(() => {
-        console.log("success");
+      .then(async () => {
+        try {
+          await setDoc(doc(db, "DayLog", email), {
+            Age: age,
+          });
+          console.log("success");
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+
         // Profile updated!
         // ...
       })
