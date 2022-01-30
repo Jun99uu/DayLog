@@ -58,9 +58,10 @@ function Diary({ email, db }) {
         setDiary((prevState) => [
           ...prevState,
           {
+            todate: entrie,
             day: entrie.substr(6, 2),
             emotion: fields[entrie].arrayValue.values[0].stringValue,
-            content: fields[entrie].arrayValue.values[1].stringValue,
+            //content: fields[entrie].arrayValue.values[1].stringValue,
           },
         ]);
       }
@@ -98,10 +99,11 @@ function Diary({ email, db }) {
       <div>
         {diary.map((diaryObject) => (
           <DiaryList
+            todate={diaryObject.todate}
             key={diaryObject.day}
             day={diaryObject.day}
             emotion={diaryObject.emotion}
-            content={diaryObject.content}
+            email={email}
           />
         ))}
       </div>

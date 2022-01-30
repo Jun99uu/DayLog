@@ -105,6 +105,7 @@ function MakeDiary({ email, db }) {
           placeholder="오늘 하루는 어떠셨나요?"
           value={content}
           onChange={handleChangeContent}
+          maxLength="300"
         />
         <br />
         <button>📌</button>

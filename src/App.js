@@ -6,6 +6,7 @@ import RegisterPage from "./routes/RegisterPage";
 import Home from "./routes/Home";
 import DayLog from "./routes/DayLog";
 import PrivateRoute from "./routes/PrivateRoute";
+import Detail from "./routes/Detail";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
@@ -37,6 +38,14 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/daylog/:email/:date"
+          element={
+            <PrivateRoute>
+              <Detail />
+            </PrivateRoute>
+          }
+        ></Route>
       </Routes>
     </Router>
   );

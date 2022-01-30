@@ -1,9 +1,12 @@
-function DiaryList({ day, emotion, content }) {
+import { Link } from "react-router-dom";
+
+function DiaryList({ todate, day, emotion, email }) {
   return (
     <div>
-      <h3>{day}일의 나는…</h3>
-      <div>{emotion}</div>
-      <p>{content}</p>
+      <Link to={`/daylog/${email}/${todate}`}>
+        <button>{emotion}</button>
+      </Link>
+      <h4>{day}일</h4>
     </div>
   );
 }

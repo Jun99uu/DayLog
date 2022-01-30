@@ -5,13 +5,24 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorDisplay, setError] = useState(null);
   let navigate = useNavigate();
 
   const auth = getAuth();
 
   const signin = async () => {
-    const result = await signInWithEmailAndPassword(auth, email, password);
-    navigate("/");
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
+    } catch (error) {
+      if (error.code === "auth/wrong-password") {
+        setError("비밀번호가 틀렸어요😢");
+      } else if (error.code === "auth/user-not-found") {
+        setError("이메일이 잘못됐거나, 없는 계정이에요😢");
+      } else {
+        setError("로그인 오류에요😢");
+      }
+    }
   };
 
   const handleOnSubmit = (event) => {
@@ -49,6 +60,8 @@ function Login() {
           required
           onChange={handleOnChange}
         />{" "}
+        <br />
+        {errorDisplay === null ? null : <div>{errorDisplay}</div>}
         <br />
         <button>📌</button>
         <Link to="/register">

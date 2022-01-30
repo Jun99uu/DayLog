@@ -15,33 +15,45 @@ function Register() {
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorDisplay, setError] = useState(null);
   let navigate = useNavigate();
   const auth = getAuth();
 
   const signup = async () => {
-    const result = await createUserWithEmailAndPassword(auth, email, password);
-    updateProfile(auth.currentUser, {
-      displayName: name,
-    })
-      .then(async () => {
-        try {
-          await setDoc(doc(db, "DayLog", email), {
-            Age: age,
-          });
-          console.log("success");
-        } catch (e) {
-          console.error("Error adding document: ", e);
-        }
-
-        // Profile updated!
-        // ...
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      updateProfile(auth.currentUser, {
+        displayName: name,
       })
-      .catch((error) => {
-        console.log("failed");
-        // An error occurred
-        // ...
-      });
-    navigate("/");
+        .then(async () => {
+          try {
+            await setDoc(doc(db, "DayLog", email), {
+              Age: age,
+            });
+          } catch (e) {}
+
+          // Profile updated!
+          // ...
+        })
+        .catch((error) => {
+          console.log("failed");
+          // An error occurred
+          // ...
+        });
+      navigate("/");
+    } catch (error) {
+      if (error.code === "auth/weak-password") {
+        setError("비밀번호는 6자리 이상으로 설정해주세요😊");
+      } else if (error.code === "auth/email-already-in-use") {
+        setError("이미 존재하는 이메일이에요😎");
+      } else {
+        setError("회원가입에 실패했어요😢");
+      }
+    }
   };
 
   const handleOnSubmit = (e) => {
@@ -102,6 +114,7 @@ function Register() {
           value={password}
         />
         <br />
+        {errorDisplay === null ? null : <div>{errorDisplay}</div>}
         <button>📌</button>
       </form>
     </div>
