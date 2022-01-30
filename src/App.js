@@ -32,8 +32,8 @@ function App() {
         <Route
           path="/dayLog"
           element={
-            <PrivateRoute isLogined={isLogined}>
-              <DayLog user={user} />
+            <PrivateRoute>
+              <DayLog />
             </PrivateRoute>
           }
         />

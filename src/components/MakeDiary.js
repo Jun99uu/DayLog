@@ -1,13 +1,9 @@
 import { doc, setDoc } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
 import { useState } from "react";
 
-const db = getFirestore();
-
-function MakeDiary({ email }) {
+function MakeDiary({ email, db }) {
   const [emotion, setEmotion] = useState("😶");
   const [content, setContent] = useState("");
-  const washingtonRef = doc(db, "DayLog", email);
   let now = new Date();
   let year = `${now.getFullYear()}`;
   let todayMonth =
