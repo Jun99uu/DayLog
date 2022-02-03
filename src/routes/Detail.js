@@ -8,6 +8,7 @@ import {
   updateDoc,
   deleteField,
 } from "firebase/firestore";
+import styles from "./Details.module.css";
 
 const db = getFirestore();
 
@@ -48,16 +49,27 @@ function Detail() {
   };
 
   return (
-    <div>
-      <button onClick={onPrevClick}>💨</button>
-      <h3>
-        {date.substr(0, 4)}년 {date.substr(4, 2)}월 {date.substr(6, 2)}일
-      </h3>
-      <h2>{name}님의 하루는 말이죠…</h2>
-      <hr />
-      <h1>{emotion}</h1>
-      <h2>{content}</h2>
-      <button onClick={onDeleteClick}>삭제</button>
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <h3>
+          {date.substr(0, 4)}년 {date.substr(4, 2)}월 {date.substr(6, 2)}일
+        </h3>
+        <h2>{name}님의 하루는 말이죠…</h2>
+        <hr />
+        <div className={styles.duple}>
+          <div className={styles.content}>
+            <span className={styles.emotion}>{emotion}</span>
+
+            <h2>{content}</h2>
+          </div>
+        </div>
+        <button onClick={onPrevClick} className={styles.backbtn}>
+          뒤로가기
+        </button>
+        <button onClick={onDeleteClick} className={styles.deletebtn}>
+          삭제
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import MakeDiary from "../components/MakeDiary";
 import Diary from "../components/Diary";
 import { getAuth } from "firebase/auth";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import styles from "./DayLog.module.css";
+import logo from "../img/logo.png";
 
 const db = getFirestore();
 
@@ -62,17 +64,55 @@ function DayLog() {
   };
 
   return (
-    <div>
-      <h1>{`DayLog가 ${name}님의 ${age}살을 기록하고있어요😄`}</h1>
-      {clicked ? (
-        <MakeDiary email={email} db={db} />
-      ) : (
-        <Diary email={email} db={db} />
-      )}
-      <button onClick={onClickHandler} disabled={disabled}>
-        {clicked ? "돌아가기" : btnName}
-      </button>
-      <button onClick={logOut}>로그아웃</button>
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <Link to="/">
+          <img src={logo} className={styles.logo} />
+        </Link>
+
+        <h2>{`${name}님의 ${age}살을 기록하고있어요`}</h2>
+        <hr className={styles.line} />
+        {clicked ? (
+          <MakeDiary email={email} db={db} />
+        ) : (
+          <Diary email={email} db={db} />
+        )}
+        {/* <button
+          onClick={onClickHandler}
+          disabled={disabled}
+          className={styles.recordbtn}
+        >
+          {clicked ? "돌아가기" : btnName}
+        </button> */}
+
+        {clicked ? (
+          <buton onClick={onClickHandler} className={styles.recordbtn}>
+            돌아가기
+          </buton>
+        ) : btnName === "기록하기" ? (
+          <button
+            onClick={onClickHandler}
+            className={styles.recordbtn}
+            disabled={disabled}
+          >
+            {btnName}
+          </button>
+        ) : (
+          <button
+            onClick={onClickHandler}
+            className={styles.disabledbtn}
+            disabled={disabled}
+          >
+            {btnName}
+          </button>
+        )}
+
+        {clicked ? null : (
+          <button onClick={logOut} className={styles.signoutbtn}>
+            로그아웃
+          </button>
+        )}
+      </div>
     </div>
   );
 }

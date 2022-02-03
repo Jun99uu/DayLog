@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
+import styles from "./DiaryList.module.css";
 
 function DiaryList({ todate, day, emotion, email }) {
   return (
-    <div>
+    <div className={styles.sticker}>
       <Link to={`/daylog/${email}/${todate}`}>
-        <button>{emotion}</button>
+        <button className={styles.emotion}>{emotion}</button>
       </Link>
-      <h4>{day}일</h4>
+      <br />
+      <span className={styles.day}>{day}일</span>
     </div>
   );
 }

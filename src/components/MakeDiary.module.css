@@ -1,0 +1,93 @@
+.container {
+  padding-top: 15px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  padding-top: 15px;
+  padding-bottom: 35px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  width: 650px;
+  border-radius: 1.5rem;
+  background-color: #dadada;
+}
+
+.radio {
+  border: none;
+  opacity: 0;
+}
+
+.radio + label {
+  font-size: 30px;
+  transition: all 0.25s;
+}
+
+.radio:hover + label {
+  font-size: 55px;
+}
+
+.radio:checked + label {
+  font-size: 55px;
+}
+
+.content {
+  border: none;
+  margin-top: 30px;
+  width: 80%;
+  height: 30px;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 280px;
+    height: 280px;
+    opacity: 0;
+  }
+}
+
+.btn {
+  margin-top: 30px;
+  position: relative;
+  border: none;
+  min-width: 130px;
+  min-height: 40px;
+  background: linear-gradient(90deg, rgba(79, 209, 197, 1) 0%, #2fa599 100%);
+  border-radius: 1000px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.btn:hover {
+  transform: scale(1.2);
+}
+
+.btn:hover::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid #2fa599;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+@media screen and (max-width: 1090px) {
+  .box {
+    width: 80%;
+  }
+}

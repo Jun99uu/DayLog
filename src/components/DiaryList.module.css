@@ -1,0 +1,15 @@
+.emotion {
+  border: none;
+  font-size: 60px;
+  margin: 10px;
+  transition: all 0.3s;
+}
+
+.emotion:hover {
+  transform: scale(1.2);
+  margin: 10px;
+}
+
+.day {
+  font-weight: bold;
+}

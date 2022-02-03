@@ -4,9 +4,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
+import styles from "./Register.module.css";
+import logo from "../img/logo.png";
 
 const db = getFirestore();
 
@@ -75,8 +77,12 @@ function Register() {
   };
 
   return (
-    <div>
-      <h1>당신이 궁금해요🤭</h1>
+    <div className={styles.box}>
+      <Link to="/">
+        <img src={logo} className={styles.logo} />
+      </Link>
+
+      <h2>당신이 궁금해요.</h2>
       <form onSubmit={handleOnSubmit}>
         <input
           name="name"
@@ -115,7 +121,7 @@ function Register() {
         />
         <br />
         {errorDisplay === null ? null : <div>{errorDisplay}</div>}
-        <button>📌</button>
+        <button className={styles.btn}>완료</button>
       </form>
     </div>
   );

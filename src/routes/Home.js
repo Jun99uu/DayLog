@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
+import styles from "./Home.module.css";
+import logo from "../img/logo.png";
 
 function Home({ isLogined }) {
   return (
-    <div>
-      <h1>DayLog</h1>
-      {isLogined ? (
-        <div>
-          <h3>반가워요, 오늘의 하루를 한 줄로 기록해볼까요?</h3>
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <img src={logo} className={styles.logo} />
+        <h3>반가워요, 오늘의 하루를 한 줄로 기록해볼까요?</h3>
+        {isLogined ? (
           <Link to="/daylog">
-            <button>시작하기</button>
+            <button className={styles.btn}>시작하기</button>
           </Link>
-        </div>
-      ) : (
-        <Link to="./login">
-          <button>로그인</button>
-        </Link>
-      )}
+        ) : (
+          <Link to="./login">
+            <button className={styles.btn}>로그인</button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,147 @@
+.box {
+  background-color: #eeeeee;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  height: 35em;
+  border-radius: 1.5rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.logo {
+  margin-top: 80px;
+  width: 200px;
+}
+
+.box input {
+  border: none;
+  margin: 5px;
+  height: 36px;
+  width: 300px;
+}
+
+.box button {
+  margin: 18px;
+}
+
+.loginbtn {
+  background-color: #91c483;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.loginbtn:before,
+.loginbtn:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.loginbtn:before {
+  border-color: #91c483;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.loginbtn:after {
+  border-bottom-width: 2px;
+  border-color: #91c483;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.loginbtn:hover,
+.loginbtn.hover {
+  background-color: #91c483;
+}
+.loginbtn:hover:before,
+.loginbtn.hover:before,
+.loginbtn:hover:after,
+.loginbtn.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+.signupbtn {
+  background-color: #ff6464;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.signupbtn:before,
+.signupbtn:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.signupbtn:before {
+  border-color: #ff6464;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.signupbtn:after {
+  border-bottom-width: 2px;
+  border-color: #ff6464;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.signupbtn:hover,
+.signupbtn.hover {
+  background-color: #ff6464;
+}
+.signupbtn:hover:before,
+.signupbtn.hover:before,
+.signupbtn:hover:after,
+.signupbtn.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1090px) {
+  .logo {
+    margin-top: 100px;
+  }
+  .box input {
+    border: none;
+    margin: 5px;
+    height: 36px;
+    width: 200px;
+  }
+}

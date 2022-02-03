@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import styles from "./Login.module.css";
+import logo from "../img/logo.png";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -40,8 +42,11 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>DayLog</h1>
+    <div className={styles.box}>
+      <Link to="/">
+        <img src={logo} className={styles.logo} />
+      </Link>
+
       <h3>당신의 하루를 한줄로 기록해보세요.</h3>
       <form onSubmit={handleOnSubmit}>
         <input
@@ -57,15 +62,14 @@ function Login() {
           placeholder="Password"
           type="password"
           required
-          required
           onChange={handleOnChange}
         />{" "}
         <br />
         {errorDisplay === null ? null : <div>{errorDisplay}</div>}
         <br />
-        <button>📌</button>
+        <button className={styles.loginbtn}>완료</button>
         <Link to="/register">
-          <button>❓</button>
+          <button className={styles.signupbtn}>가입</button>
         </Link>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import DiaryList from "./DiaryList";
+import styles from "./Diary.module.css";
 
 function Diary({ email, db }) {
   const docRef = doc(db, "DayLog", email);
@@ -77,35 +78,53 @@ function Diary({ email, db }) {
   }, [Year, Month]);
 
   return (
-    <div>
-      <div>
-        <button name="prevyear" onClick={dateChange}>
+    <div className={styles.box}>
+      <div className={styles.selectyear}>
+        <button
+          name="prevyear"
+          onClick={dateChange}
+          className={styles.selector}
+        >
           {prev}
         </button>
-        <h3>{Year}</h3>
-        <button name="nextyear" onClick={dateChange}>
+        <span className={styles.year}>{Year}</span>
+        <button
+          name="nextyear"
+          onClick={dateChange}
+          className={styles.selector}
+        >
           {next}
         </button>
       </div>
-      <div>
-        <button name="prevmonth" onClick={dateChange}>
+      <div className={styles.selectmonth}>
+        <button
+          name="prevmonth"
+          onClick={dateChange}
+          className={styles.selectormonth}
+        >
           {prev}
         </button>
-        <h1>{Month}</h1>
-        <button name="nextmonth" onClick={dateChange}>
+        <span className={styles.month}>{Month}</span>
+        <button
+          name="nextmonth"
+          onClick={dateChange}
+          className={styles.selectormonth}
+        >
           {next}
         </button>
       </div>
-      <div>
-        {diary.map((diaryObject) => (
-          <DiaryList
-            todate={diaryObject.todate}
-            key={diaryObject.day}
-            day={diaryObject.day}
-            emotion={diaryObject.emotion}
-            email={email}
-          />
-        ))}
+      <div className={styles.diarybox}>
+        <div className={styles.diary}>
+          {diary.map((diaryObject) => (
+            <DiaryList
+              todate={diaryObject.todate}
+              key={diaryObject.day}
+              day={diaryObject.day}
+              emotion={diaryObject.emotion}
+              email={email}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

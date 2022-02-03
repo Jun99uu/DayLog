@@ -1,0 +1,83 @@
+.container {
+  display: grid;
+  grid-template-columns: 1.1fr 10fr 1.1fr;
+  grid-template-rows: 0.13fr 1fr 0.13fr;
+  text-align: center;
+  height: 100%;
+}
+
+.box {
+  background-color: #eeeeee;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  height: 35em;
+  border-radius: 1.5rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.logo {
+  margin-top: 90px;
+  width: 300px;
+}
+
+h3 {
+  margin-top: 30px;
+  color: rgb(22, 22, 22);
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 280px;
+    height: 280px;
+    opacity: 0;
+  }
+}
+
+.btn {
+  margin-top: 30px;
+  position: relative;
+  border: none;
+  min-width: 180px;
+  min-height: 50px;
+  background: linear-gradient(90deg, rgba(79, 209, 197, 1) 0%, #2fa599 100%);
+  border-radius: 1000px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.btn:hover {
+  transform: scale(1.2);
+}
+
+.btn:hover::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid #2fa599;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+@media screen and (max-width: 1090px) {
+  .container {
+    grid-template-rows: 0.13fr 1fr 0.13fr;
+  }
+  .logo {
+    margin-top: 130px;
+    width: 200px;
+  }
+}

@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: 1.1fr 10fr 1.1fr;
+  grid-template-rows: 0.13fr 1fr 0.13fr;
+  height: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 1090px) {
+  .container {
+    grid-template-rows: 0.13fr 1fr 0.13fr;
+  }
+}
