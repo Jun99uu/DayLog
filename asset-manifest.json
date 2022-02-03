@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/DayLog.git/static/css/main.27a58c9c.css",
+    "main.js": "/DayLog.git/static/js/main.996ec373.js",
+    "static/media/logo.png": "/DayLog.git/static/media/logo.db0f8e7c20a366cbd219.png",
+    "index.html": "/DayLog.git/index.html",
+    "main.27a58c9c.css.map": "/DayLog.git/static/css/main.27a58c9c.css.map",
+    "main.996ec373.js.map": "/DayLog.git/static/js/main.996ec373.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27a58c9c.css",
+    "static/js/main.996ec373.js"
+  ]
+}
